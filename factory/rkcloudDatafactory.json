@@ -1,0 +1,15 @@
+{
+	"name": "rkcloudDatafactory",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Enabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b1be0550-d097-4f08-8684-b2750c0c5e50",
+		"tenantId": "2b9de641-acb7-4dc2-96b9-d334b2a2078b"
+	}
+}
