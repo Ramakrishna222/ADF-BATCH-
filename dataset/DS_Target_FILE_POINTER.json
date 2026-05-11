@@ -1,0 +1,33 @@
+{
+	"name": "DS_Target_FILE_POINTER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"TrFileName": {
+				"type": "string"
+			},
+			"TrfloderName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().TrFileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().TrfloderName",
+					"type": "Expression"
+				},
+				"fileSystem": "rk-container"
+			}
+		}
+	}
+}
