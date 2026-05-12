@@ -8,8 +8,20 @@
 		"AzureDataLakeStorage1_accountKey": {
 			"value": ""
 		},
+		"LS_AZURE_SQL_DATABASE_password": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://sarmastorage.dfs.core.windows.net/"
+		},
+		"LS_AZURE_SQL_DATABASE_properties_typeProperties_server": {
+			"value": "rk.database.windows.net"
+		},
+		"LS_AZURE_SQL_DATABASE_properties_typeProperties_database": {
+			"value": "rkcloudDb"
+		},
+		"LS_AZURE_SQL_DATABASE_properties_typeProperties_userName": {
+			"value": "rama"
 		},
 		"containerUri": {
 			"value": ""
