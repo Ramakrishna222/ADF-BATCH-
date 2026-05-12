@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -227,7 +228,7 @@
 																	"type": "DatasetReference",
 																	"parameters": {
 																		"TrFileName": {
-																			"value": "@item.name()",
+																			"value": "@item().name",
 																			"type": "Expression"
 																		},
 																		"TrfloderName": {
