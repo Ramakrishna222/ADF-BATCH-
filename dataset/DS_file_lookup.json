@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "industry.csv",
+				"folderPath": "floder",
 				"fileSystem": "rk-container"
 			},
 			"columnDelimiter": ",",
