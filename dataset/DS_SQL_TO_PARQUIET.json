@@ -1,0 +1,32 @@
+{
+	"name": "DS_SQL_TO_PARQUIET",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Targetfilename": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "sql_datasets"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().Targetfilename",
+					"type": "Expression"
+				},
+				"folderPath": "SqlDatasets",
+				"fileSystem": "rk-container"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
