@@ -124,7 +124,7 @@
 																	"type": "DatasetReference",
 																	"parameters": {
 																		"TrFileName": {
-																			"value": "@item.name()",
+																			"value": "@item().name",
 																			"type": "Expression"
 																		},
 																		"TrfloderName": {
@@ -291,7 +291,7 @@
 		"parameters": {
 			"Flodername": {
 				"type": "string",
-				"defaultValue": "DefaultFloder"
+				"defaultValue": "StagedDatasets"
 			}
 		},
 		"annotations": []
