@@ -1,0 +1,21 @@
+{
+	"name": "IRsqlselfhostedonpremisis",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "DESKTOP-EVU41JE",
+			"database": "AdventureWorks2022",
+			"encrypt": "mandatory",
+			"trustServerCertificate": true,
+			"authenticationType": "SQL",
+			"userName": "yamini",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiNmMxMzM4OC00ZTlmLTQ5OTYtODZlYi0wYTlmMzczN2EzMDciLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "IRselfhostedOnPermisis",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
