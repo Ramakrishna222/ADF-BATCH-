@@ -1,0 +1,35 @@
+{
+	"name": "DL_flow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "dl_dataset",
+						"type": "DatasetReference"
+					},
+					"name": "sourcetable"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "pivot"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Industry as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> sourcetable",
+				"sourcetable pivot(pivotBy(Industry),",
+				"     {} = ERROR_FUNCTION(''),",
+				"     columnNaming: '3$N5$V6',",
+				"     lateral: true) ~> pivot"
+			]
+		}
+	}
+}

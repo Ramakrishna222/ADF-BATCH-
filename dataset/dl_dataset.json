@@ -1,12 +1,9 @@
 {
-	"name": "DS_file_lookup",
+	"name": "dl_dataset",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
-		},
-		"folder": {
-			"name": "ADLC_DATASETS"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
