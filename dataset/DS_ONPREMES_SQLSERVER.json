@@ -1,0 +1,30 @@
+{
+	"name": "DS_ONPREMES_SQLSERVER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "IRsqlselfhostedonpremisis",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"SCHEMA": {
+				"type": "string"
+			},
+			"TABLE": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().SCHEMA",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().TABLE",
+				"type": "Expression"
+			}
+		}
+	}
+}

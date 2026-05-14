@@ -1,0 +1,130 @@
+{
+	"name": "PL_ONPREMES_SQLSERVER",
+	"properties": {
+		"activities": [
+			{
+				"name": "LookupINFO",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT table_schema, table_name\nFROM information_schema.tables\nWHERE table_type = 'BASE TABLE';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_ONPREMES_SQLSERVER",
+						"type": "DatasetReference",
+						"parameters": {
+							"SCHEMA": "\"",
+							"TABLE": "\""
+						}
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEachTable",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "LookupINFO",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('LookupINFO').output.value",
+						"type": "Expression"
+					},
+					"batchCount": 20,
+					"activities": [
+						{
+							"name": "CopySQLTable",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_ONPREMES_SQLSERVER",
+									"type": "DatasetReference",
+									"parameters": {
+										"SCHEMA": {
+											"value": "@item().TABLE_SCHEMA",
+											"type": "Expression"
+										},
+										"TABLE": {
+											"value": "@item().TABLE_NAME",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "ds_onpremes_sqlserver_to_adls",
+									"type": "DatasetReference",
+									"parameters": {
+										"floder": {
+											"value": "@item().TABLE_SCHEMA",
+											"type": "Expression"
+										},
+										"filename": {
+											"value": "@concat(toLower(item().TABLE_NAME),formatDateTime(utcNow(),'yyyyMMdd'))",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"annotations": []
+	}
+}
