@@ -70,12 +70,14 @@
 									"partitionOption": "None"
 								},
 								"sink": {
-									"type": "ParquetSink",
+									"type": "DelimitedTextSink",
 									"storeSettings": {
 										"type": "AzureBlobFSWriteSettings"
 									},
 									"formatSettings": {
-										"type": "ParquetWriteSettings"
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
 									}
 								},
 								"enableStaging": false,
@@ -106,15 +108,15 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "ds_onpremes_sqlserver_to_adls",
+									"referenceName": "DS_ONPREMES_TO_ADLS",
 									"type": "DatasetReference",
 									"parameters": {
-										"floder": {
+										"Floder": {
 											"value": "@item().TABLE_SCHEMA",
 											"type": "Expression"
 										},
 										"filename": {
-											"value": "@concat(toLower(item().TABLE_NAME),formatDateTime(utcNow(),'yyyyMMdd'))",
+											"value": "@concat(toLower(item().TABLE_NAME), '_', formatDateTime(utcNow(), 'yyyyMMdd'))",
 											"type": "Expression"
 										}
 									}
