@@ -8,11 +8,23 @@
 		"AzureDataLakeStorage1_accountKey": {
 			"value": ""
 		},
+		"IRsqlselfhostedonpremisis_password": {
+			"value": ""
+		},
 		"LS_AZURE_SQL_DATABASE_password": {
 			"value": ""
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://sarmastorage.dfs.core.windows.net/"
+		},
+		"IRsqlselfhostedonpremisis_properties_typeProperties_server": {
+			"value": "DESKTOP-EVU41JE"
+		},
+		"IRsqlselfhostedonpremisis_properties_typeProperties_database": {
+			"value": "AdventureWorks2022"
+		},
+		"IRsqlselfhostedonpremisis_properties_typeProperties_userName": {
+			"value": "yamini"
 		},
 		"LS_AZURE_SQL_DATABASE_properties_typeProperties_server": {
 			"value": "rk.database.windows.net"
