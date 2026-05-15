@@ -1,0 +1,24 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_COPY_ACTIVITY",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/rk-container/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/6bb57f0c-6ee2-4488-aba5-06d777ca4fa1/resourceGroups/rk_rainbow/providers/Microsoft.Storage/storageAccounts/sarmastorage",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
