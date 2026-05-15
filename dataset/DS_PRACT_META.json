@@ -1,14 +1,9 @@
 {
-	"name": "DS_SOURCE_DATASET",
+	"name": "DS_PRACT_META",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
-		},
-		"parameters": {
-			"filename": {
-				"type": "string"
-			}
 		},
 		"folder": {
 			"name": "Practice"
@@ -18,10 +13,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().filename",
-					"type": "Expression"
-				},
 				"folderPath": "floder",
 				"fileSystem": "rk-container"
 			}
